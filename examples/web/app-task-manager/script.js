@@ -22,7 +22,13 @@ function saveTasks(tasks) {
 
 function seedTasks() {
   const tasks = [
-    { id: uid(), title: 'Ler capítulo 3 de Algoritmos', due: addDaysISO(2), level: 'high', desc: 'Priorizar exercícios 3.1-3.5', status: 'todo' },
+    { 
+      id: uid(), 
+      title: 'Ler capítulo 3 de Algoritmos', 
+      due: addDaysISO(2), 
+      level: 'high', 
+      desc: 'Priorizar exercícios 3.1-3.5', 
+      status: 'todo' },
     { id: uid(), title: 'Resolver lista de TS', due: addDaysISO(5), level: 'medium', desc: 'Atenção a generics', status: 'doing' },
     { id: uid(), title: 'Revisão rápida: HTML/CSS', due: addDaysISO(10), level: 'low', desc: '30 minutos', status: 'done' }
   ]
