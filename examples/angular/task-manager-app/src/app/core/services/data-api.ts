@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 export interface Task {
   id: string;
@@ -13,9 +13,32 @@ export interface Task {
   providedIn: 'root'
 })
 export class DataApi {
+  seed = signal<Task[] | undefined>(undefined);
+
+  constructor() {
+    this.seed.set(this.load());
+  }
 
   load() {
     return this.seedTasks();
+  }
+
+  insert(title: string, due: string, level: string, desc: string) {
+    const newTask: Task = {
+      id: this.uid(),
+      title: title,
+      due: due,
+      level: level as 'low' | 'medium' | 'high',
+      desc: desc,
+      status: 'todo'
+    }
+
+    this.seed()?.push(newTask);
+    /*
+    this.seed.update(
+       currentValue => [...currentValue, newTask]
+    )
+    */
   }
 
   private seedTasks() {
