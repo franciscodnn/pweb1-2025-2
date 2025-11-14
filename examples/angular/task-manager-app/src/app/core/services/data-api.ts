@@ -1,11 +1,11 @@
 import { Injectable, signal } from '@angular/core';
 
 export interface Task {
-  id: string;
+  id?: string;
   title: string;
   due: string;
   level: 'low' | 'medium' | 'high';
-  desc: string;
+  description: string;
   status: 'todo' | 'doing' | 'done';
 }
 
@@ -29,7 +29,7 @@ export class DataApi {
       title: title,
       due: due,
       level: level as 'low' | 'medium' | 'high',
-      desc: desc,
+      description: desc,
       status: 'todo'
     }
 
@@ -43,9 +43,9 @@ export class DataApi {
 
   private seedTasks() {
     const tasks: Task[] = [
-      { id: this.uid(), title: 'Ler capítulo 3 de Algoritmos', due: this.addDaysISO(2), level: 'high', desc: 'Priorizar exercícios 3.1-3.5', status: 'todo' },
-      { id: this.uid(), title: 'Resolver lista de TS', due: this.addDaysISO(5), level: 'medium', desc: 'Atenção a generics', status: 'doing' },
-      { id: this.uid(), title: 'Revisão rápida: HTML/CSS', due: this.addDaysISO(10), level: 'low', desc: '30 minutos', status: 'done' }
+      { id: this.uid(), title: 'Ler capítulo 3 de Algoritmos', due: this.addDaysISO(2), level: 'high', description: 'Priorizar exercícios 3.1-3.5', status: 'todo' },
+      { id: this.uid(), title: 'Resolver lista de TS', due: this.addDaysISO(5), level: 'medium', description: 'Atenção a generics', status: 'doing' },
+      { id: this.uid(), title: 'Revisão rápida: HTML/CSS', due: this.addDaysISO(10), level: 'low', description: '30 minutos', status: 'done' }
     ];
     
     return tasks;

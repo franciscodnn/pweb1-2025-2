@@ -1,0 +1,21 @@
+@endpoint = https://twzzctfrpfgaeekyzimk.supabase.co/rest/v1/tasks
+@apiKey = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3enpjdGZycGZnYWVla3l6aW1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNzQwNzYsImV4cCI6MjA3ODY1MDA3Nn0.CQvEjwaqDLGJFq1Jrng3Lfr2nLPAdQtq8YeorRszyfQ
+
+### GET
+GET {{ endpoint }}
+apikey: {{ apiKey }}
+Authorization: Bearer {{ apiKey }}
+
+### POST
+POST {{ endpoint }}
+apikey: {{ apiKey }}
+Authorization: Bearer {{ apiKey }}
+Content-Type: application/json
+
+{
+    "title": "Projeto Etapa I",
+    "due": "2025-11-15",
+    "level": "high",
+    "description": "Projeto prioritário de angular!",
+    "status": "todo"
+}
