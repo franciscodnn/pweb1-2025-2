@@ -8,6 +8,8 @@ import { ApiRestSupabase } from '../core/services/api-rest-supabase/api-rest-sup
 
 import { Task } from '../core/services/data-api';
 
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-form-modal',
   imports: [ReactiveFormsModule],
@@ -17,13 +19,26 @@ import { Task } from '../core/services/data-api';
 export class FormModal {
   dataApi = inject(DataApi);
   formBuilder = inject(FormBuilder);
-  showModal = input(false);
   outputModal = output<boolean>();
 
   modelModal = model(false);
 
-  constructor(private apiRestSupabase: ApiRestSupabase) {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
+  constructor(private apiRestSupabase: ApiRestSupabase) {
+    this.route.queryParams.subscribe(
+      params => {
+        if(params['showmodal'] && 
+          params['showmodal'] === 'true'){
+            this.modelModal.set(true);
+            return;
+          }
+        this.modelModal.set(false);
+        // this.router.navigate(['/tasks']);
+        console.log(params)
+      }
+    );
   }
 
   // form = new FormGroup({
@@ -50,6 +65,8 @@ export class FormModal {
     this.modelModal.set(false);
     
     this.outputModal.emit(!this.outputModal);
+
+    this.router.navigate(['/tasks']);
   }
 
   handleSubmit() {
