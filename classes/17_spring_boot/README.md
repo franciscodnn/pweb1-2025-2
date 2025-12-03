@@ -1,6 +1,6 @@
 [main](../../README.md)
 
-# Aula 16 - Criando uma API REST com Spring Boot - BookStore
+# Aula 17 - Criando uma API REST com Spring Boot - BookStore
 
 ## Objetivos da Aula
 - Compreender os conceitos básicos de uma API REST
