@@ -2,12 +2,14 @@ package com.example.task.taskmanager;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -23,16 +25,36 @@ public class TaskController {
     // http://localhost:8080/api/taskmanager/all
     @GetMapping("/all")
     public List<Task> listAllTasks() {
-        return this.taskService.listAllTaks();
+        List<Task> tasks = this.taskService.listAllTaks();
+
+        /*
+        Task temp = (Task) tasks.get(0);
+
+        System.out.println(temp.getTitle());
+        */
+        return tasks;
     }
 
     @PostMapping
     public String createTask(@RequestBody Task task) {
         System.out.println(task);
 
-        // this.taskService.create(task);
+        this.taskService.create(task);
 
         return "Objeto armazenado com sucesso";
+    }
+
+    @DeleteMapping("/{id}")
+    public String remove(@PathVariable Long id) {
+        return this.taskService.remove(id);
+    }
+
+    @PutMapping("/{id}")
+    public String updateViaPUT(
+        @PathVariable Long id,
+        @RequestBody Task task
+    ) {
+        return this.taskService.updateViaPUT(id, task);
     }
     
 

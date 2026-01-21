@@ -14,3 +14,18 @@ Content-Type: application/json
     "level": "high",
     "status": "doing"
 }
+
+### DELETE
+DELETE http://localhost:8080/api/taskmanager/2
+
+### PUT
+PUT http://localhost:8080/api/taskmanager/4
+Content-Type: application/json
+
+{
+    "title": "[PUT] Estudar spring boot",
+    "description": "Preparar materiais para leitura sobre spring boot",
+    "due": "2025-12-31",
+    "level": "high",
+    "status": "doing"
+}

@@ -16,20 +16,26 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "tasks")
-@Getter
-@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "due")
     private String due;
+
+    @Column(name = "level")
     private String level;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "status")
     private String status;
     
     @Column(name = "created_at", insertable = false, updatable = false)

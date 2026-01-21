@@ -1,3 +1,3 @@
-INSERT INTO tasks (title, due, level, description, status, created_at) VALUES ('Ler capítulo 3 de Algoritmos', '2025-11-20', 'high', 'Priorizar exercícios 3.1-3.5', 'todo', '2025-11-14 00:45:00.093811');
-INSERT INTO tasks (title, due, level, description, status, created_at) VALUES ('Resolver lista de TS', '2025-11-16', 'medium', 'Atenção a generics', 'doing', '2025-11-14 00:45:00.093811');
-INSERT INTO tasks (title, due, level, description, status, created_at) VALUES ('Revisão rápida: HTML/CSS', '2025-11-15', 'low', '30 minutos', 'done', '2025-11-14 00:45:00.093811');
+INSERT INTO tasks (title, due, level, description, status) VALUES ('Ler capítulo 3 de Algoritmos', '2025-11-20', 'high', 'Priorizar exercícios 3.1-3.5', 'todo');
+INSERT INTO tasks (title, due, level, description, status) VALUES ('Resolver lista de TS', '2025-11-16', 'medium', 'Atenção a generics', 'doing');
+INSERT INTO tasks (title, due, level, description, status) VALUES ('Revisão rápida: HTML/CSS', '2025-11-15', 'low', '30 minutos', 'done');
