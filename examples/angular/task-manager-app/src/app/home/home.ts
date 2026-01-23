@@ -10,7 +10,7 @@ import { UpperCasePipe } from '@angular/common';
 
 import { LevelMaskPipe } from '../core/pipes/levelMask/level-mask-pipe';
 
-import { ApiRestSupabase } from '../core/services/api-rest-supabase/api-rest-supabase';
+import { ApiRest } from '../core/services/api-rest-supabase/api-rest';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -27,7 +27,7 @@ export class HomeApp {
   arrayValues = signal(['Valor1', 'valor2', 'valor3']);
 
   constructor(
-    private apiRestSupabase: ApiRestSupabase,
+    private apiRest: ApiRest,
     private router: Router,
     private route: ActivatedRoute) {
     
@@ -43,7 +43,7 @@ export class HomeApp {
   }
 
   private loadUsers() {
-    this.apiRestSupabase.getAllTasks().subscribe({
+    this.apiRest.getAllTasks().subscribe({
       next: tasks => {
         console.log(tasks);
         this.tasks.set(tasks);

@@ -29,3 +29,11 @@ Content-Type: application/json
     "level": "high",
     "status": "doing"
 }
+
+### PATCH
+PATCH http://localhost:8080/api/taskmanager/2
+Content-Type: application/json
+
+{
+    "title": "[PATCH] Resolver lista de Spring Boot"
+}

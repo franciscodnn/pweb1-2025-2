@@ -4,7 +4,7 @@ import { FormBuilder, ReactiveFormsModule, FormGroup, FormControl } from '@angul
 import { DataApi } from '../core/services/data-api';
 
 import { Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
-import { ApiRestSupabase } from '../core/services/api-rest-supabase/api-rest-supabase';
+import { ApiRest } from '../core/services/api-rest-supabase/api-rest';
 
 import { Task } from '../core/services/data-api';
 
@@ -26,7 +26,7 @@ export class FormModal {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
-  constructor(private apiRestSupabase: ApiRestSupabase) {
+  constructor(private apiRest: ApiRest) {
     this.route.queryParams.subscribe(
       params => {
         if(params['showmodal'] && 
@@ -82,7 +82,7 @@ export class FormModal {
       status: 'todo'
     };
 
-    this.apiRestSupabase.createTask(task).subscribe({
+    this.apiRest.createTask(task).subscribe({
       next: data => console.log('Task cadastrada'),
       error: error => console.log(error)
     });
