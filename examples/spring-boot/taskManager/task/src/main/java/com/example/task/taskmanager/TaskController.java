@@ -2,6 +2,10 @@ package com.example.task.taskmanager;
 
 import java.util.List;
 
+import org.apache.catalina.connector.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +31,7 @@ public class TaskController {
 
     // http://localhost:8080/api/taskmanager/all
     @GetMapping("/all")
-    public List<Task> listAllTasks() {
+    public ResponseEntity<List<Task>> listAllTasks() {
         List<Task> tasks = this.taskService.listAllTaks();
 
         /*
@@ -35,37 +39,44 @@ public class TaskController {
 
         System.out.println(temp.getTitle());
         */
-        return tasks;
+        return ResponseEntity.ok(tasks);
     }
 
     @PostMapping
-    public String createTask(@RequestBody Task task) {
+    public ResponseEntity<String> createTask(@RequestBody Task task) {
         System.out.println(task);
 
         this.taskService.create(task);
 
-        return "Objeto armazenado com sucesso";
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .header("Resposta", "App Spring Boot")
+                .body("Objeto armazenado com sucesso");
     }
 
     @DeleteMapping("/{id}")
-    public String remove(@PathVariable Long id) {
-        return this.taskService.remove(id);
+    public ResponseEntity<String> remove(@PathVariable Long id) {
+        return ResponseEntity.ok(this.taskService.remove(id));
     }
 
     @PutMapping("/{id}")
-    public String updateViaPUT(
+    public ResponseEntity<String> updateViaPUT(
         @PathVariable Long id,
         @RequestBody Task task
     ) {
-        return this.taskService.updateViaPUT(id, task);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .body(this.taskService.updateViaPUT(id, task));
     }
 
     @PatchMapping("/{id}")
-    public String updateViaPATCH(
+    public ResponseEntity<String> updateViaPATCH(
         @PathVariable Long id,
         @RequestBody Task task
     ) {
-        return this.taskService.updateViaPATCH(id, task);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .body(this.taskService.updateViaPATCH(id, task));
     }
     
     /*
@@ -76,9 +87,9 @@ public class TaskController {
     }
     */
    @GetMapping
-   public String getTaskById(@RequestParam(value = "id", required = false) Integer id,
+   public ResponseEntity<String> getTaskById(@RequestParam(value = "id", required = false) Integer id,
 @RequestParam(value = "name", required = false) String name) {
-    return "Task com id: " + id + " - " + name;
+    return ResponseEntity.ok("Task com id: " + id + " - " + name);
    }
 
 }
